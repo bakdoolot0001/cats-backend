@@ -6,7 +6,7 @@ import cors from "cors";
 const globalRouter = Router();
 
 const corsConfig = {
-  origin: ["http://localhost:3000"],
+  origin: ["http://localhost:3000", "https://cats-backend-uaoo.onrender.com/"],
 };
 
 globalRouter.use("/auth", cors(corsConfig), authRouter);
