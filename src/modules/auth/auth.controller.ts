@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import prisma from "../../config/prisma";
 import bcrypt from "bcrypt";
-import generateToken from "../../config/token";
+import { generateToken } from "../../config/token";
 
 const register = async (req: Request, res: Response) => {
   try {

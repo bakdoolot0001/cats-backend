@@ -73,8 +73,30 @@ const deleteCatCard = async (req: Request, res: Response) => {
   }
 };
 
+const detailCats = async (req: Request, res: Response) => {
+  try {
+    const { detailId } = req.params;
+    if (!detailId) {
+      return res.status(400).json({ message: "ID берилген жок!" });
+    }
+    const findDetail = await prisma.cats.findFirst({
+      where: {
+        id: detailId,
+      },
+    });
+    res.status(200).json({
+      success: true,
+      data: findDetail,
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: `Error in detailCats: ${error}` });
+  }
+};
+
 export default {
   getAllCats,
   createCatCard,
   deleteCatCard,
+  detailCats,
 };
